@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.egg
+*.pyo
+*.pyd
+*.env
+.env.*
+.envrc
+*.sqlite3
+*.db
+
+# Streamlit cache
+.streamlit/config.toml
+.streamlit/*.json
+.streamlit/*.pyc
+.streamlit/secrets.toml
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+
+# Jupyter
+.ipynb_checkpoints/
+
+# PyInstaller
+dist/
+build/
+
+# Logs
+*.log
+
+# Virtual environments
+.venv/
+env/
+venv/
+ENV/
+
+# Misc
+*.bak
+*.tmp
+*.swp
+
+# Ignore exported PDF files (optional)
+*.pdf

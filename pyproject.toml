@@ -1,0 +1,12 @@
+[project]
+name = "hr-frontend-01"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "python-dotenv>=1.1.1",
+    "requests>=2.32.4",
+    "streamlit>=1.46.1",
+    "supabase>=2.16.0",
+]
