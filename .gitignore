@@ -1,17 +1,29 @@
-# Python
+# Python bytecode
 __pycache__/
 *.py[cod]
-*.egg-info/
-*.egg
 *.pyo
 *.pyd
-*.env
+
+# Virtual environments (uv or other tools)
+.venv/
+env/
+venv/
+ENV/
+
+# Egg files
+*.egg-info/
+*.egg
+
+# Environment variables / secrets
+.env
 .env.*
 .envrc
+
+# SQLite or other local DB
 *.sqlite3
 *.db
 
-# Streamlit cache
+# Streamlit cache/config
 .streamlit/config.toml
 .streamlit/*.json
 .streamlit/*.pyc
@@ -33,16 +45,10 @@ build/
 # Logs
 *.log
 
-# Virtual environments
-.venv/
-env/
-venv/
-ENV/
-
-# Misc
+# Editor swap files
 *.bak
 *.tmp
 *.swp
 
-# Ignore exported PDF files (optional)
+# Ignore generated PDFs
 *.pdf

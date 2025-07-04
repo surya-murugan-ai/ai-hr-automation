@@ -78,28 +78,59 @@ def render_jd(jd):
         st.markdown(f"[🧾 View JD PDF]({jd['pdf_url']})", unsafe_allow_html=True)
 
 # 🔐 Login Page
+# def login():
+#     st.title("🔐 Login")
+#     email = st.text_input("Email")
+#     password = st.text_input("Password", type="password")
+
+#     if st.button("Login"):
+#         try:
+#             user = supabase.auth.sign_in_with_password({"email": email, "password": password})
+#             if user.user:
+#                 st.session_state.user = user
+#                 st.session_state.access_token = user.session.access_token
+#                 st.session_state.refresh_token = user.session.refresh_token
+
+#                 # Load company
+#                 company = supabase.table("companies").select("*").eq("owner_id", user.user.id).single().execute()
+#                 st.session_state.company = company.data
+#                 load_chat_history(user.user.id)
+#                 st.rerun()
+#             else:
+#                 st.error("Login failed.")
+#         except:
+#             st.error("Invalid credentials.")
+
 def login():
     st.title("🔐 Login")
-    email = st.text_input("Email")
-    password = st.text_input("Password", type="password")
+    
+    with st.form("login_form"):
+        email = st.text_input("Email")
+        password = st.text_input("Password", type="password")
+        submit = st.form_submit_button("Login")
+    
+        if submit:
+            try:
+                user = supabase.auth.sign_in_with_password({
+                    "email": email,
+                    "password": password
+                })
 
-    if st.button("Login"):
-        try:
-            user = supabase.auth.sign_in_with_password({"email": email, "password": password})
-            if user.user:
-                st.session_state.user = user
-                st.session_state.access_token = user.session.access_token
-                st.session_state.refresh_token = user.session.refresh_token
+                if user.user:
+                    st.session_state.user = user
+                    st.session_state.access_token = user.session.access_token
+                    st.session_state.refresh_token = user.session.refresh_token
 
-                # Load company
-                company = supabase.table("companies").select("*").eq("owner_id", user.user.id).single().execute()
-                st.session_state.company = company.data
-                load_chat_history(user.user.id)
-                st.rerun()
-            else:
-                st.error("Login failed.")
-        except:
-            st.error("Invalid credentials.")
+                    # Load company
+                    company = supabase.table("companies").select("*").eq("owner_id", user.user.id).single().execute()
+                    st.session_state.company = company.data
+                    load_chat_history(user.user.id)
+                    st.rerun()
+                else:
+                    st.error("Login failed. Please check credentials.")
+            except Exception as e:
+                st.error("Invalid credentials or server error.")
+
 
 # 🏢 Company Profile Setup
 def company_profile():
